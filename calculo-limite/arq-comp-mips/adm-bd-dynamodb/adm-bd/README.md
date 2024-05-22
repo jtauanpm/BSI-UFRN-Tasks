@@ -1,2 +1,2 @@
 # BSI-UFRN-Tasks
-Repositório destinado ao armazenamento de todos os repositórios destinado ao desenvolvimento de atividades e tarefas relacionadas ao bacharelado em Sistemas de Informação - UFRN
+Este repositório foi criado com objetivo de armazenar todos os repositórios que foram criados destinados ao desenvolvimento de atividades e tarefas relacionadas ao curso de bacharelado em Sistemas de Informação - UFRN
