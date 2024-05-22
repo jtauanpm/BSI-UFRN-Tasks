@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>ReactZero</title>
+    <link rel="stylesheet" href="../global/base.css" />
+    <link rel="stylesheet" href="../global/components.css" />
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/babel.js"></script>
+    
+    <script type="text/babel">
+      const cervejas = [
+        {
+          id: 0,
+          name: 'Heineken',
+          alcohol: '10%',
+          ibu: '30',
+          style: 'Red Ale',
+        },
+        {
+          id: 1,
+          name: 'Guiness',
+          alcohol: '20%',
+          ibu: '22',
+          style: 'English IPA',
+        },
+        {
+          id: 2,
+          name: 'Desesperados',
+          alcohol: '5%',
+          ibu: '21',
+          style: 'Imperial Stout',
+        },
+        { id: 3, name: 'Becks', alcohol: '30%', ibu: '43', style: 'Cream Ale' },
+      ];
+
+      const Cabecalho = () => <h1>Minha tabela de bebidas</h1>;
+
+      const TabelaBebidas = () => {
+        const [showTable, setShowTable] = React.useState(false);
+
+        return (
+          <div className="container">
+            <Cabecalho />
+            <button onClick={() => setShowTable(!showTable)}>
+              Carregar cervejas
+            </button>
+            <table id="tabela" border="1">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Alcohol</th>
+                  <th>Ibu</th>
+                  <th>Style</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {showTable &&
+                  cervejas.map(({ id, name, alcohol, ibu, style }) => {
+                    return (
+                      <tr key={id}>
+                        <td>{name}</td>
+                        <td>{alcohol}</td>
+                        <td>{ibu}</td>
+                        <td>{style}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
+        );
+      };
+
+      ReactDOM.render(<TabelaBebidas />, document.getElementById('app'));
+    </script>
+  </body>
+</html>

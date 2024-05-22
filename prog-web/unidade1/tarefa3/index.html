@@ -1,0 +1,64 @@
+<!--
+    https://sites.google.com/view/fabricio10/p%C3%A1gina-inicial/cursos/pweb/receita-html-js2
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefa 3</title>
+
+    <style>
+        * {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="loadButton">Carregando cervejas...</button>
+    <button id="orderButton" style="opacity: 0;">Ordenar cervejas</button>
+    <button id="desorderButton" style="opacity: 0;">Embaralhar cervejas</button>
+    <div id="cervejas"></div>
+</body>
+
+
+
+<script>
+    let cervejas = ["Guiness", "Desperados", "Becks", "Stella", "Kaiser"];
+    let hasText = false;
+
+    function transform(item) {
+        return `<td><h4>${item}</h4></td>`;
+    }
+
+    let orderBtn = document.getElementById("orderButton");
+    let desorderButton = document.getElementById("desorderButton");
+    function loadDiv() {
+        orderBtn.style.opacity = 1;
+        desorderButton.style.opacity = 1;
+        hasText = true;
+        let div = document.getElementById("cervejas");
+        let cervejasHtml = cervejas.map(transform);
+        div.innerHTML = `${cervejasHtml.join("\n")}`;
+    }
+
+    let loadBtn = document.getElementById("loadButton");
+    loadBtn.addEventListener("click", loadDiv);
+
+    orderBtn.addEventListener("click", () => {
+        cervejas.sort();
+        loadDiv();
+    });
+
+    desorderButton.addEventListener("click", () => {
+        cervejas.sort(()=> Math.random() - 0.5);
+        loadDiv();
+    });
+
+
+</script>
+
+</html>

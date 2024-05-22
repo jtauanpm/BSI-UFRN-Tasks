@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos JSON</title>
+    <style>
+        * {
+            text-align: center;
+            margin: 10ch auto;
+            background-color: pink;
+        }
+
+        #cervejas {
+            background-color: green;
+        }
+
+        button{
+            width: 100px;
+            border-radius: 10px;
+            background-color: black;
+            color: aquamarine;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+    <table id="cervejas" border="1" style="opacity: 0;">
+    </table>
+</body>
+<script>
+    let cervejas = [
+        {
+            name: "Guiness",
+            alcohol: "10%",
+            style: "Pilsen",
+            ibu: "15"
+        },
+        {
+            name: "Desperados",
+            alcohol: "6%",
+            style: "Pilsen",
+            ibu: "17"
+        },
+        {
+            name: "Becks",
+            alcohol: "5%",
+            style: "Pilsen",
+            ibu: "19"
+        }
+    ]
+
+    let isVisible = false;
+
+    //cs é um array de cervejas
+
+    const carregarDiv = (cs, id = "cervejas", columns = ["Nome","Álcool","Estilo","Amargor"], properties = ["name", "alcohol", "style", "ibu"]) => {
+        const table = document.getElementById(id)
+        table.style.opacity = isVisible ? 0 : 1;
+        isVisible = !isVisible;
+        const itensHtml = cs.map((item) => `<tr><td>${item[properties[0]]}</td><td>${item[properties[1]]}</td><td>${item[properties[2]]}</td><td>${item[properties[3]]}</td></tr>`)
+        table.innerHTML = `<tr><td>${columns[0]}</td><td>${columns[1]}</td><td>${columns[2]}</td><td>${columns[3]}</td></tr>${itensHtml.join("\n")}`
+    }
+
+    let botao = document.getElementById("botaoCarregar")
+    botao.addEventListener("click", () => carregarDiv(cervejas))
+</script>
+
+</html>

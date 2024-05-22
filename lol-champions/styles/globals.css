@@ -1,0 +1,160 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  font-family: inherit;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  background-color: #0c6cfc;
+  border-collapse: collapse;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 8px;
+  max-width: 500px;
+  gap: 7px;
+  padding: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #0c5cd4;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: black;
+    background: white;
+  }
+}
+
+body {
+  font-family: 'open sans', sans-serif;
+  font-size: 16px;
+}
+
+#filter {
+  text-align: center;
+  background-color: #fff;
+  color: black;
+  columns: black;
+  border-radius: 8px
+}
+
+.Filter {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.names {
+  text-align: center;
+}
+
+
+
+table {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+thead button {
+  border: 0;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: inherit;
+  padding: 0.5em;
+  margin-bottom: 1px;
+}
+
+thead button.ascending::after {
+  content: '👇';
+  display: inline-block;
+  margin-left: 1em;
+}
+
+thead button.descending::after {
+  content: '☝️';
+  display: inline-block;
+  margin-left: 1em;
+}
+
+td:first-child { 
+  width: 250px 
+}
+
+td:first-child + td {  
+  width: 200px
+}
+
+ul {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  font-family: Arial, Verdana, sans-serif;
+  background-color: #ccc;
+  border-collapse: collapse;
+  border: 1px solid rgb(30, 28, 28);
+  border-radius: 15px;
+  max-width: 500px;
+  list-style: none;
+  gap: 7px;
+  padding: 5px;
+}
+
+ul li{
+  text-align: justify;
+  padding: 0 20px;
+}
+
+.title {
+  margin-top: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+tbody tr:hover {
+  cursor: pointer;
+  background-color: rgb(135, 183, 250);
+}
+
+.warning {
+  background-color: rgba(255, 0, 0, 0.448);
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+img {
+  border-radius: 15px;
+}

@@ -1,0 +1,32 @@
+* {
+    text-align: center;
+    margin: 0 auto;
+    background-color: pink;
+}
+
+p.verso {
+    color: blue;
+    margin-bottom: 10px;
+}
+
+p.mote {
+    color: red;
+    margin-bottom: 10px;
+}
+
+a.autor {
+    color: red;
+}
+
+a.autor:hover {
+    color: blue;
+}
+
+img.autor {
+    border-radius: 350px;
+    height: 300px;
+}
+
+th.style {
+    background-color: green;
+}
