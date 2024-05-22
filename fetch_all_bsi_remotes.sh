@@ -16,10 +16,10 @@ DIRECTORIES=(
 # Loop para cada diretório
 for dir in "${DIRECTORIES[@]}"; do
     # Navegar até o diretório
-    cd "$dir"
+    # cd "$dir"
     
     # Excluir o diretório .git
-    rm -rf .git
+    git rm --cached "$dir"
     
     # Voltar para o diretório anterior
     cd ..
