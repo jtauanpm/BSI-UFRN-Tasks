@@ -1,0 +1,98 @@
+% Capítulo 6
+\chapter{Diagrama de Casos de Uso}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\linewidth]{Imagens/Sistema de empréstimos.pdf}
+\end{figure}
+
+\section{Descrição dos Atores}
+
+\textbf{Usuário:} Este ator representa as pessoas físicas que mantém ou mantiveram contas na biblioteca, com direito a utilizar seus serviços como emprestimo de livros. Ele não acessa diretamente o sistema, mas se comunica com o funcionário para que esse realize as operações necessárias.\\\\
+
+\textbf{Funcionário:} Este ator representa a pessoa física responsável pelo atendimento da biblioteca em determinado momento. Ele tem como função se relacionar com os usuários e lidar com a máquina que executa o sistema, realizando o resgistro de empréstimos e as demais possíveis operações com os materiais da biblioteca. Além disso, ele é encarregado  de manter todos os cadastros do sistema (funcionário, usuário, livro).
+	
+\section{Descrição dos Casos de Uso}
+
+%Manter Usuário
+\begin{longtable}{|l|}
+\hline
+\endfirsthead %% acaba o cabeçalho, ou primeira linha da coluna
+\hline
+\hline
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\emph{Continua na próxima página}}%%% isto aparecerá na quebra de página
+\endfoot
+\hline
+\endlastfoot
+Nome: Manter Usuário\\ \hline
+Resumo: Caso de uso encarregado de adicionar, excluir, consultar e modificar os dados \\ de cada usuário. As informações necessárias para o cadastro são: Nome, CPF, RG,\\ telefone, endereço, data de nascimento e senha.\\ \hline
+Pré-condição:  O usuário deve ter em mãos algum documento original com foto e CPF\\ para quaisquer operação no sistema (cadastro, exclusão, consulta, alteração e \\ empréstimos).\\ \hline
+Pós-condição: Não se aplica.\\ \hline
+Cenário principal:\\ \\ ADIÇÃO:\\        1. O funcionário solicita o documento e informações do usuário.\\        2. O usuário apresenta o documento e informa seus dados para o funcionário.\\        3. O funcionário insere no sistema as informações do usuário.\\         4. O funcionário conclui o cadastro salvando as informações.  \\ \\ CONSULTA:\\        1. O funcionário informa para o sistema o nome ou CPF do usuário.\\        2. O sistema exibe na tela todas as informações do usuário.\\ \\ EXCLUSÃO:\\        1. O funcionário consulta o cadastro do usuário (include consulta).\\        2. O funcionário clica na opção excluir cadastro.\\        3. O sistema exclui o usuário do cadastro de usuários.\\        4. O sistema exibe uma mensagem de sucesso.\\ \\ ALTERAÇÃO:\\        1. O funcionário solicita que o seu cadastro seja atualizado.\\        2. O funcionário solicita ao usuário o documento e as informações necessárias para \\atualização. \\        3. O funcionário localiza o cadastro do usuário no sistema (include consulta).\\        4. O funcionário altera as informações e salva no sistema.\\ \hline
+Cenário alternativo:\\ \\ ADIÇÃO:\\ Documento do usuário é inválido.\\        \\ 3.1. Caso o documento do usuário seja inválido, ele será informado e deverá apresentar  \\ documentação válida.\\ \\Usuário é menor de idade.\\ \\3.1. Se o usuário for menor de idade não poderá ser cadastrado.\\ \\ CONSULTA:\\ Usuário não cadastrado.\\ \\ 2.1. Caso o usuário não esteja cadastrado o sistema será exibida a mensagem ¨Aluno\\ não encontrado¨.\\ \\ EXCLUSÃO:\\ Usuário com entrega de livro pendente.\\ \\ 3.1. Caso o usuário tenha algum empréstimo de livro ativo, não será possível realizar \\ a exclusão e uma mensagem será retornada ao funcionário. \\ \\ ALTERAÇÃO:\\ Documento do usuário é inválido.\\ \\ 3.1. Caso o documento do usuário seja inválido, ele será informado e deverá apresentar \\ documentação válida.\\ \hline
+Requisitos não funcionais (restrições/validações):\\ \\         1. O CPF deverá ser composto por 11 dígitos.\\         2. O usuário deve ser maior de idade.\\ \hline
+\end{longtable}
+
+%Empréstimo ou Renovação
+\begin{longtable}{|l|}
+\hline
+\endfirsthead %% acaba o cabeçalho, ou primeira linha da coluna
+\hline
+\hline
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\emph{Continua na próxima página}}%%% isto aparecerá na quebra de página
+\endfoot
+\hline
+\endlastfoot
+Nome: Empréstimo ou Renovação\\ \hline
+Resumo: Caso de uso responsável por realizar ou renovar empréstimos de materiais  \\ solicitados pelo usuário. A movimentação será registrada no sistema junto com os dados \\ do usuário, identificação do material e data de devolução prevista.\\ \hline
+Pré-condição: O usuário deve estar cadastrado no sistema. O usuário deve escolher um \\ livro que esteja disponível.\\ \hline
+Pós-condição: Após o decorrer do período estipulado, o usuário deverá devolver ou \\ renovar o empréstimo do livro.\\ \hline
+Cenário principal:\\ \\ EMPRÉSTIMO/RENOVAÇÃO:\\        1. O usuário deve escolher um livro para empréstimo.\\        2. O usuário deve ser atendido pelo funcionário para realizar o empréstimo.\\        3. O usuário deve apresentar documento com foto e seus dados para ser localizado\\ no sistema. \\         4. O funcionário registra a movimentação no sistema e informa a data de devolução \\ para o usuário. \\         5. O usuário digita a senha. \\         6. O usuário retira o livro e o atendimento é encerrado. \\ \hline
+Cenário alternativo:\\ \\ EMPRÉSTIMO/RENOVAÇÃO:\\ Usuário com cadastro inválido.\\        \\ 3.1. O usuário que não possui cadastro ou cadastro inválido é convidado a fazer ou  \\ atualizar o cadastro (extends manter usuário -> adição ou alteração ).\\ \\Usuário com pendências.\\ \\4.1. O usuário já tem o máximo de livros emprestados nesse momento (3) ou o usuário já\\ possui o mesmo livro emprestado atualmente ou o usuário possui livros com empréstimos\\ vencidos. O usuário é avisado ou penalizado e o caso de uso é encerrado.\\  \\Usuário informa senha errada.\\ \\6.1. É solicitado a senha novamente ao usuário por 3 vezes no máximo.\\ 6.2. Caso o usuário não saiba a senha, o funcionário ajuda-o a recupera-lá. O usuário\\ deve informar seus dados e apresentar documento válido.\\ \hline
+Requisitos não funcionais (restrições/validações):\\ \\         1. O usuário deve estar cadastrado no sistema.\\         2. O usuário não poderá ter mais de 3 livros emprestados simultaneamente.\\         3. O usuário deverá informar senha válida. \hline
+\end{longtable}
+
+% Manter Livro
+\begin{longtable}{|l|}
+\hline
+\endfirsthead %% acaba o cabeçalho, ou primeira linha da coluna
+\hline
+\hline
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\emph{Continua na próxima página}}%%% isto aparecerá na quebra de página
+\endfoot
+\hline
+\endlastfoot
+Nome: Manter Livro\\ \hline
+Resumo: Caso de uso encarregado de adicionar, excluir, consultar e modificar os dados \\ de cada livro. As informações necessárias para o cadastro são: Nome, autor e editora.\\ \hline
+Pré-condição: O funcionário deve ter em mãos alguma informação sobre o livro para\\ quaisquer operação no sistema (cadastro, exclusão, consulta, alteração e empréstimos).\\ \hline
+Pós-condição: Não se aplica.\\ \hline
+Cenário principal:\\ \\ ADIÇÃO:\\        1. O funcionário verifica informações do livro.\\        2. O funcionário insere no sistema as informações do livro.\\        3. O funcionário conclui o cadastro salvando as informações.\\ \\ CONSULTA:\\        1. O funcionário informa para o sistema o nome do livro.\\        2. O sistema exibe na tela todas as informações do livro.\\ \\ EXCLUSÃO:\\        1. O funcionário consulta o cadastro do livro (include consulta).\\        2. O funcionário clica na opção excluir cadastro.\\        3. O sistema exclui o livro do cadastro de livros.\\        4. O sistema exibe uma mensagem de sucesso.\\ \\ ALTERAÇÃO:\\        1. O funcionário solicita que o seu cadastro seja atualizado.\\        2. O funcionário insere as informações necessárias sobre o livro para atualização.\\        3. O funcionário localiza o cadastro do livro no sistema (include consulta).\\        4. O funcionário altera as informações e salva no sistema.\\ \hline
+Cenário alternativo:\\ \\ ADIÇÃO:\\ Informações do livro são inválidas.\\        \\ 2.1. Caso as informações do livro sejam inválidas, o funcionário será informado e deverá \\ apresentar informações válidas.\\ \\ CONSULTA:\\ Livro não cadastrado.\\ \\ 2.1. Caso o livro não esteja cadastrado o sistema será exibida a mensagem "Livro não\\ encontrado".\\ \\ EXCLUSÃO:\\ Usuário com entrega de livro pendente.\\ \\ 3.1. Caso o livro tenha algum empréstimo ativo, não será possível realizar a exclusão.\\ \\ ALTERAÇÃO:\\ Informações do livro são inválidas.\\ \\ 3.1. Caso as informações do livro sejam inválidas, o funcionário será informado e deverá\\ apresentar informações válidas.\\ \hline
+Requisitos não funcionais (restrições/validações):\\ \\ Não se aplica.\\ \hline
+\end{longtable}
+
+%Manter Funcionário
+\begin{longtable}{|l|}
+\hline
+\endfirsthead %% acaba o cabeçalho, ou primeira linha da coluna
+\hline
+\hline
+\hline
+\endhead
+\hline \multicolumn{3}{r}{\emph{Continua na próxima página}}%%% isto aparecerá na quebra de página
+\endfoot
+\hline
+\endlastfoot
+Nome: Manter Funcionário\\ \hline
+Resumo: Caso de uso encarregado de adicionar, excluir, consultar e modificar os dados \\ de cada funcionário. As informações necessárias para cadastro são: nome, CPF, RG, \\ telefone, endereço, data de nascimento, salário, função.\\ \hline
+Pré-condição:  O funcionário deve ter em mãos algum documento original com foto e CPF\\ para quaisquer operação no sistema (cadastro, exclusão, consulta, alteração e \\ empréstimos).\\ \hline
+Pós-condição: Não se aplica.\\ \hline
+Cenário principal:\\ \\ ADIÇÃO:\\        1. O funcionário solicita o documento e informações do funcionário.\\        2. O funcionário apresenta o documento e informa seus dados para o funcionário.\\        3. O funcionário insere no sistema as informações do funcionário.\\         4. O funcionário conclui o cadastro salvando as informações.  \\ \\ CONSULTA:\\        1. O funcionário informa para o sistema o nome ou CPF do funcionário.\\        2. O sistema exibe na tela todas as informações do funcionário.\\ \\ EXCLUSÃO:\\        1. O funcionário consulta o cadastro do funcionário (include consulta).\\        2. O funcionário clica na opção excluir cadastro.\\        3. O sistema exclui o funcionário do cadastro de funcionários.\\        4. O sistema exibe uma mensagem de sucesso.\\ \\ ALTERAÇÃO:\\        1. O funcionário solicita que o seu cadastro seja atualizado.\\        2. O funcionário solicita ao funcionário o documento e as informações necessárias para \\atualização. \\        3. O funcionário localiza o cadastro do funcionário no sistema (include consulta).\\        4. O funcionário altera as informações e salva no sistema.\\ \hline
+Cenário alternativo:\\ \\ ADIÇÃO:\\ Documento do funcionário é inválido.\\        \\ 3.1. Caso o documento do funcionário seja inválido, ele será informado e deverá apresentar  \\ documentação válida.\\ \\funcionário é menor de idade.\\ \\3.1. Se o funcionário for menor de idade não poderá ser cadastrado.\\ \\ CONSULTA:\\ funcionário não cadastrado.\\ \\ 2.1. Caso o funcionário não esteja cadastrado o sistema será exibida a mensagem ¨funcionário\\ não encontrado¨.\\ \\ ALTERAÇÃO:\\ Documento do funcionário é inválido.\\ \\ 3.1. Caso o documento do funcionário seja inválido, ele será informado e deverá apresentar \\ documentação válida.\\ \hline
+Requisitos não funcionais (restrições/validações):\\ \\         1. O CPF deverá ser composto por 11 dígitos.\\         2. O funcionário deve ser maior de idade.\\ \hline
+\end{longtable}
